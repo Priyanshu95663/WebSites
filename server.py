@@ -7,9 +7,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/<username>')
-def hello_user(username=None):
-    return render_template('index.html', username=username)
+@app.route('/profile')
+def hello_user(email=None):
+    return render_template('new.html', email=email)
 
 @app.route('/<username>/<int:post_id>')
 def hello_user_id(username=None, post_id=1):
@@ -27,7 +27,7 @@ def favicon():
 # def blog():
 #     return render_template('main.js')
 
-@app.route('/about.html')
-def blog2():
+# @app.route('/about.html')
+# def blog2():
     
-    return render_template('about.html')
+#     return render_template('about.html')
