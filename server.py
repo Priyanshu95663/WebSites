@@ -1,5 +1,7 @@
 from flask import Flask, escape, request, render_template, send_from_directory
 from os import path
+import json
+from urllib.request import urlopen
 
 app = Flask(__name__)
 
@@ -9,6 +11,11 @@ def index():
 
 @app.route('/profile')
 def hello_user(email=None):
+    with urlopen("https://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote?format=json") as response:
+        source = response.read()
+
+    data = json.loads(source)
+    email = data.user_id
     return render_template('new.html', email=email)
 
 @app.route('/<username>/<int:post_id>')
