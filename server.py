@@ -11,7 +11,7 @@ def index():
 
 @app.route('/profile')
 def hello_user(email=None):
-    with urlopen("https://finance.yahoo.com/webservice/v1/symbols/allcurrencies/quote?format=json") as response:
+    with urlopen("https://rsportfolio.azurewebsites.net/.auth/me") as response:
         source = response.read()
 
     data = json.loads(source)
